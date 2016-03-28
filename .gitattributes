@@ -1,2 +1,6 @@
 *.ai binary
 *.eps binary
+*.ttf binary
+*.otf binary
+*.pptx binary
+
