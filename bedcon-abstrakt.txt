@@ -1,0 +1,7 @@
+Rethinking Best Practices – Moderne Web-Anwendungen mit React entwickeln
+Nils Hartmann
+React ist eine JavaScript-Bibliothek, mit der zeitgemäße Web-Anwendungen entwickelt werden.
+
+Ursprünglich von Facebook konzipiert wird React bereits auf zahlreichen Websites wie Twitter, Netflix oder Airbnb eingesetzt. Und obwohl - oder gerade weil? - React an wichtigen Stellen gegen gängige Best Practices der Webentwicklung verstößt, steigen Beliebtheit und Verbreitung von React kontinuierlich weiter an. In diesem Talk stelle ich Ihnen die grundsätzlichen Konzepte und Ideen von React anhand von Codebeispielen vor. Dabei sehen wir uns auch an, warum React und TypeScript ein gutes Gespann ergeben.
+
+Länge: 60 Minuten
