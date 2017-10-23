@@ -1,0 +1,9 @@
+cd ~/develop/javascript/react-workshop && npm start
+
+cd ~/develop/javascript/react-workshop/code/schritte/redux/redux-complete-app-typescript/ && npm start
+
+
+FÜR TYPESCRIPT DEMO:
+cd ~/develop/javascript/react-workshop/code/schritte/4-test-typescript/ && npm start
+code ~/develop/javascript/react-workshop/code/schritte/4-test-typescript/
+
