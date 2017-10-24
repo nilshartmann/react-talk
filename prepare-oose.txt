@@ -1,3 +1,6 @@
+https://figma.com öffnen und einloggen
+
+
 cd ~/develop/javascript/react-workshop && npm start
 
 cd ~/develop/javascript/react-workshop/code/schritte/redux/redux-complete-app-typescript/ && npm start
