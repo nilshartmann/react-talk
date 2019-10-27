@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      button,
+      div {
+        font-size: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <button id="runButton">Run...</button>
+    </div>
+    <video height="300px"></video>
+    <div>
+      <button id="startButton">Start</button>
+      <button id="pauseButton">Pause</button>
+      <button id="stopButton">Stop</button>
+    </div>
+    <div id="infoMsg"></div>
+
+    <div id="errorMsg"></div>
+  </body>
+
+  <script>
+    function startVideo() {
+      navigator.mediaDevices
+        .getUserMedia(constraints)
+        .then(printStreamInfos)
+        .then(stream => {
+          video.srcObject = stream;
+          video.play();
+          startElement.addEventListener("click", () => {
+            video.play();
+          });
+          pauseElement.addEventListener("click", () => {
+            video.pause();
+          });
+          stopElement.addEventListener("click", () => {
+            video.pause();
+            stream.getTracks().forEach(track => track.stop());
+            video.srcObject = null;
+            runElement.disabled = false;
+          });
+        })
+        .catch(error => {
+          if (error.name === "ConstraintNotSatisfiedError") {
+            errorMsg(
+              "The resolution " +
+                constraints.video.width.exact +
+                "x" +
+                constraints.video.width.exact +
+                " px is not supported by your device."
+            );
+          } else if (error.name === "PermissionDeniedError") {
+            errorMsg(
+              "Permissions have not been granted to use your camera and " +
+                "microphone, you need to allow the page access to your devices in " +
+                "order for the demo to work."
+            );
+          }
+          errorMsg("getUserMedia error: " + error.name, error);
+        });
+
+      function printStreamInfos(stream) {
+        const videoTracks = stream.getVideoTracks();
+        infoMsg(
+          "Got stream with constraints:" + JSON.stringify(constraints, 0, 2)
+        );
+        infoMsg("Using video device: " + videoTracks[0].label);
+
+        return stream;
+      }
+
+      function infoMsg(msg) {
+        infoElement.innerHTML += "<p>" + msg + "</p>";
+      }
+
+      function errorMsg(msg, error) {
+        errorElement.innerHTML += "<p>" + msg + "</p>";
+        if (typeof error !== "undefined") {
+          console.error(error);
+        }
+      }
+    }
+    const video = document.querySelector("video");
+    const constraints = (window.constraints = {
+      audio: false,
+      video: true
+    });
+    const runElement = document.querySelector("#runButton");
+    const errorElement = document.querySelector("#errorMsg");
+    const infoElement = document.querySelector("#infoMsg");
+    const startElement = document.querySelector("#startButton");
+    const pauseElement = document.querySelector("#pauseButton");
+    const stopElement = document.querySelector("#stopButton");
+    runElement.addEventListener("click", () => {
+      runElement.disabled = true;
+      startVideo();
+    });
+  </script>
+</html>
