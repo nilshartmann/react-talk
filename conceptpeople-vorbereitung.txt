@@ -1,0 +1,12 @@
+VORBEREITUNG
+=============
+
+STARTEN: ANWENDUNG MIT ROUTER, GGF. MIT REDUX UND ROUTER
+
+- useApi typisieren
+
+
+TYPESCRIPT DEMO: 
+================
+- starten workspace-typescript
+- 
